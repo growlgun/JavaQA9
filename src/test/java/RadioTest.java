@@ -5,7 +5,7 @@ public class RadioTest {
     Radio service = new Radio();
 
     @Test
-    public void ShouldIncreaseVolume() {
+    public void shouldBeAbleToSetVolume() {
         int expected = 1;
         int actual = service.setVolume(1);
         Assertions.assertEquals(expected, actual);
@@ -13,14 +13,44 @@ public class RadioTest {
     }
 
     @Test
-    public void ShouldNotIncreaseAbove100() {
+    public void shouldNotBeAbleToIncreaseVolumeAbove100(){
+        int expected = 100;
+        service.currentVolume = 100;
+        int actual = service.increaseVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldBeAbleToIncreaseVolume(){
+        int expected = 1;
+        int actual = service.increaseVolume();
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldBeAbleToDecreaseVolume(){
+        int expected = 0;
+        service.currentVolume = 1;
+        int actual = service.decreaseVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotBeAbleToDecreaseVolumeBelow0(){
+        int expected = 0;
+        int actual = service.decreaseVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void ShouldNotBeAbleToSetVolumeAbove100() {
         int expected = 100;
         int actual = service.setVolume(101);
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void ShouldDecreaseVolume() {
+    public void ShouldNotBeAbleToSetVolumeBelow0() {
         int expected = 0;
         int actual = service.setVolume(-2);
         Assertions.assertEquals(expected, actual);
@@ -30,10 +60,7 @@ public class RadioTest {
     @Test
     public void ShouldStartFromZeroWave() {
         int expected = 0;
-        for (int i = 0; i < 10; i++) {
-            service.nextWave();
-
-        }
+        for (int i = 0; i < 10; i++) service.nextWave();
         int actual = service.currentWave;
         Assertions.assertEquals(expected, actual);
 

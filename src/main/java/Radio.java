@@ -2,6 +2,28 @@ public class Radio {
     public int currentVolume;
     public int currentWave;
 
+    public int increaseVolume() {
+        if (currentVolume >= 100) {
+            currentVolume = 100;
+        } else {
+            currentVolume++;
+
+
+        }
+        return currentVolume;
+    }
+
+    public int decreaseVolume(){
+        if (currentVolume <= 0){
+            currentVolume = 0;
+        } else {
+            currentVolume--;
+
+        }
+    return currentVolume;
+    }
+
+
     public int setVolume(int volume) {
         if (volume < 0) {
             return 0;
@@ -40,5 +62,6 @@ public class Radio {
         currentWave = wave;
         return currentWave;
     }
+
 
 }
