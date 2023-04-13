@@ -1,10 +1,33 @@
 public class Radio {
     private int currentVolume;
-    public int currentWave;
+    private int currentWave;
 
-    public int setCurrentVolume(int currentVolume) {
-        this.currentVolume = currentVolume;
+    public int getCurrentVolume() {
         return currentVolume;
+    }
+
+    public void setCurrentWave(int currentWave) {
+        if (currentWave > 9) {
+            currentWave = 0;
+        }
+        if (currentWave < 0) {
+            currentWave = 9;
+        }
+        this.currentWave = currentWave;
+    }
+
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < 0) {
+            currentVolume = 0;
+        }
+        if (currentVolume > 100) {
+            currentVolume = 100;
+        }
+        this.currentVolume = currentVolume;
+    }
+
+    public int getCurrentWave() {
+        return currentWave;
     }
 
     public int increaseVolume() {
@@ -12,8 +35,6 @@ public class Radio {
             currentVolume = 100;
         } else {
             currentVolume++;
-
-
         }
         return currentVolume;
     }
@@ -29,23 +50,11 @@ public class Radio {
     }
 
 
-    public int setVolume(int volume) {
-        if (volume < 0) {
-            return 0;
-        }
-        if (volume > 100) {
-            return 100;
-        }
-        currentVolume = volume;
-        return currentVolume;
-    }
-
     public void nextWave() {
         if (currentWave >= 9) {
             currentWave = 0;
         } else {
             currentWave++;
-
 
         }
     }
@@ -57,17 +66,6 @@ public class Radio {
             currentWave--;
 
         }
-    }
-
-    public int setWave(int wave) {
-        if (wave < 0) {
-            return 0;
-        }
-        if (wave > 9) {
-            return 9;
-        }
-        currentWave = wave;
-        return currentWave;
     }
 
 
