@@ -13,14 +13,15 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldNotBeAbleToIncreaseVolumeAbove100(){
+    public void shouldNotBeAbleToIncreaseVolumeAbove100() {
         int expected = 100;
-        service.currentVolume = 100;
+        service.setCurrentVolume(100);
         int actual = service.increaseVolume();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
-    public void shouldBeAbleToIncreaseVolume(){
+    public void shouldBeAbleToIncreaseVolume() {
         int expected = 1;
         int actual = service.increaseVolume();
         Assertions.assertEquals(expected, actual);
@@ -28,15 +29,16 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldBeAbleToDecreaseVolume(){
+    public void shouldBeAbleToDecreaseVolume() {
+
         int expected = 0;
-        service.currentVolume = 1;
+        service.setCurrentVolume(1);
         int actual = service.decreaseVolume();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldNotBeAbleToDecreaseVolumeBelow0(){
+    public void shouldNotBeAbleToDecreaseVolumeBelow0() {
         int expected = 0;
         int actual = service.decreaseVolume();
         Assertions.assertEquals(expected, actual);
@@ -45,7 +47,7 @@ public class RadioTest {
     @Test
     public void ShouldNotBeAbleToSetVolumeAbove100() {
         int expected = 100;
-        int actual = service.setVolume(101);
+        int actual = service.setCurrentVolume(100);
         Assertions.assertEquals(expected, actual);
     }
 
