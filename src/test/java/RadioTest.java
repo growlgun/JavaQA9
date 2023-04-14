@@ -14,7 +14,7 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldNotBeAbleToIncreaseVolumeAbove100() {
+    public void pShouldNotBeAbleToIncreaseVolumeAbove100() {
 
         service.setCurrentVolume(100);
         service.increaseVolume();
